@@ -21,9 +21,12 @@ const PromptCreate = (props) => {
     axios({
       url: `${apiUrl}/prompts`,
       method: 'POST',
+      headers: {
+        'Authorization': `Token token=${props.user.token}`
+      },
       data: { prompt: prompt }
     })
-      .then(res => setCreatedPromptId(res.data.prompt.id))
+      .then(res => setCreatedPromptId(res.data.prompt._id))
       .catch(console.error)
   }
 

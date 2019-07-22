@@ -38,9 +38,12 @@ class App extends Component {
           <Route path='/prompts' render={() => (
             <Prompts alert={this.alert} setUser={this.setUser} />
           )} />
-          <Route path='/create-prompt' render={() => (
-            <CreatePrompt alert={this.alert} setUser={this.setUser} />
-          )} />
+          <AuthenticatedRoute
+            user={user}
+            path='/create-prompt'
+            render={() => (
+              <CreatePrompt alert={this.alert} user={user} />
+            )} />
           <Route path='/sign-in' render={() => (
             <SignIn alert={this.alert} setUser={this.setUser} />
           )} />
