@@ -7,7 +7,8 @@ import PromptForm from './PromptForm'
 const PromptCreate = (props) => {
   const [prompt, setPrompt] = useState({
   })
-  const [createdPromptId, setCreatedPromptId] = useState(null)
+  const [createdPromptId, setCreatedPromptId] = useState('')
+
   const handleChange = event => {
     event.persist()
     const updatedField = { [event.target.name]: event.target.value }
@@ -27,6 +28,7 @@ const PromptCreate = (props) => {
       data: { prompt: prompt }
     })
       .then(res => setCreatedPromptId(res.data.prompt._id))
+      .then(console.log(createdPromptId))
       .catch(console.error)
   }
 

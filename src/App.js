@@ -8,6 +8,7 @@ import SignIn from './auth/components/SignIn'
 import SignOut from './auth/components/SignOut'
 import ChangePassword from './auth/components/ChangePassword'
 import Prompts from './prompts/components/Prompts'
+import Prompt from './prompts/components/Prompt'
 import CreatePrompt from './prompts/components/CreatePrompt'
 
 import { SnackbarProvider } from 'notistack'
@@ -35,7 +36,7 @@ class App extends Component {
           <Route path='/sign-up' render={() => (
             <SignUp alert={this.alert} setUser={this.setUser} />
           )} />
-          <Route path='/prompts' render={() => (
+          <Route exact path='/prompts' render={() => (
             <Prompts alert={this.alert} setUser={this.setUser} />
           )} />
           <AuthenticatedRoute
@@ -50,6 +51,11 @@ class App extends Component {
           <AuthenticatedRoute user={user} path='/sign-out' render={() => (
             <SignOut alert={this.alert} clearUser={this.clearUser} user={user} />
           )} />
+          <Route
+            exact path='/prompts/:id'
+            render={() => (
+              <Prompt alert={this.alert} user={user} />
+            )} />
           <AuthenticatedRoute user={user} path='/change-password' render={() => (
             <ChangePassword alert={this.alert} user={user} />
           )} />
