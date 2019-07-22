@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import './App.scss'
 import { Route } from 'react-router-dom'
 
 import AuthenticatedRoute from './auth/components/AuthenticatedRoute'
@@ -10,15 +9,14 @@ import SignOut from './auth/components/SignOut'
 import ChangePassword from './auth/components/ChangePassword'
 import Prompts from './prompts/components/Prompts'
 
-import Alert from 'react-bootstrap/Alert'
+import { SnackbarProvider } from 'notistack'
 
 class App extends Component {
   constructor () {
     super()
 
     this.state = {
-      user: null,
-      alerts: []
+      user: null
     }
   }
 
@@ -26,29 +24,18 @@ class App extends Component {
 
   clearUser = () => this.setState({ user: null })
 
-  alert = (message, type) => {
-    this.setState({ alerts: [...this.state.alerts, { message, type }] })
-  }
-
   render () {
-    const { alerts, user } = this.state
+    const { user } = this.state
 
     return (
-      <React.Fragment>
+      <SnackbarProvider maxSnack={3}>
         <Header user={user} />
-        {alerts.map((alert, index) => (
-          <Alert key={index} dismissible variant={alert.type}>
-            <Alert.Heading>
-              {alert.message}
-            </Alert.Heading>
-          </Alert>
-        ))}
         <main className="container">
-          <Route path='/prompts' render={() => (
-            <Prompts alert={this.alert} setUser={this.setUser} />
-          )} />
           <Route path='/sign-up' render={() => (
             <SignUp alert={this.alert} setUser={this.setUser} />
+          )} />
+          <Route path='/prompts' render={() => (
+            <Prompts alert={this.alert} setUser={this.setUser} />
           )} />
           <Route path='/sign-in' render={() => (
             <SignIn alert={this.alert} setUser={this.setUser} />
@@ -60,7 +47,7 @@ class App extends Component {
             <ChangePassword alert={this.alert} user={user} />
           )} />
         </main>
-      </React.Fragment>
+      </SnackbarProvider>
     )
   }
 }

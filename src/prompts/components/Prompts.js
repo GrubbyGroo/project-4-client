@@ -27,7 +27,8 @@ const Prompts = (props) => {
   return (
     <div>
       <h4>Prompts</h4>
-      <div>{item && item.text}</div>
+      <div>Prompt: {item && item.text}</div>
+      <div>Category: {item && item.category}</div>
     </div>
   )
 }
