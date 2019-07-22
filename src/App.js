@@ -8,6 +8,7 @@ import SignIn from './auth/components/SignIn'
 import SignOut from './auth/components/SignOut'
 import ChangePassword from './auth/components/ChangePassword'
 import Prompts from './prompts/components/Prompts'
+import CreatePrompt from './prompts/components/CreatePrompt'
 
 import { SnackbarProvider } from 'notistack'
 
@@ -36,6 +37,9 @@ class App extends Component {
           )} />
           <Route path='/prompts' render={() => (
             <Prompts alert={this.alert} setUser={this.setUser} />
+          )} />
+          <Route path='/create-prompt' render={() => (
+            <CreatePrompt alert={this.alert} setUser={this.setUser} />
           )} />
           <Route path='/sign-in' render={() => (
             <SignIn alert={this.alert} setUser={this.setUser} />

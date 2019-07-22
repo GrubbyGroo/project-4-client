@@ -2,12 +2,13 @@ import React, { useState } from 'react'
 import axios from 'axios'
 import { Redirect } from 'react-router-dom'
 import apiUrl from '../../apiConfig'
+import PromptForm from './PromptForm'
 
 const PromptCreate = (props) => {
   const [prompt, setPrompt] = useState({
   })
   const [createdPromptId, setCreatedPromptId] = useState(null)
-  const handleChange = evnet => {
+  const handleChange = event => {
     event.persist()
     const updatedField = { [event.target.name]: event.target.value }
     const editedPrompt = Object.assign(prompt, updatedField)
@@ -32,7 +33,12 @@ const PromptCreate = (props) => {
 
   return (
     <div>
-    <PromptForm />
+      <PromptForm
+        prompt={prompt}
+        handleChange={handleChange}
+        handleSubmit={handleSubmit}
+        cancelPath="/"
+      />
     </div>
   )
 }
