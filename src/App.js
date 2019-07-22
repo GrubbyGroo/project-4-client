@@ -10,6 +10,7 @@ import ChangePassword from './auth/components/ChangePassword'
 import Prompts from './prompts/components/Prompts'
 import Prompt from './prompts/components/Prompt'
 import CreatePrompt from './prompts/components/CreatePrompt'
+import EditPrompt from './prompts/components/EditPrompt'
 
 import { SnackbarProvider } from 'notistack'
 
@@ -54,7 +55,12 @@ class App extends Component {
           <Route
             exact path='/prompts/:id'
             render={() => (
-              <Prompt alert={this.alert} user={user} />
+              <Prompt user={user} />
+            )} />
+          <Route
+            exact path='/prompts/:id/edit'
+            render={() => (
+              <EditPrompt user={user} />
             )} />
           <AuthenticatedRoute user={user} path='/change-password' render={() => (
             <ChangePassword alert={this.alert} user={user} />
