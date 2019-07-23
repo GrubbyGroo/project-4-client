@@ -1,6 +1,8 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
+// const categories = ['Animals', 'Industrial']
+
 const PromptForm = ({ prompt, handleSubmit, handleChange, cancelPath }) => (
   <form onSubmit={handleSubmit}>
     <label>Text</label>

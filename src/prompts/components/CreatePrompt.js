@@ -1,8 +1,10 @@
 import React, { useState } from 'react'
 import axios from 'axios'
-import { Redirect } from 'react-router-dom'
+import { Redirect, withRouter } from 'react-router-dom'
+import { withSnackbar } from 'notistack'
 import apiUrl from '../../apiConfig'
 import PromptForm from './PromptForm'
+import messages from '../../auth/messages'
 
 const PromptCreate = (props) => {
   const [prompt, setPrompt] = useState({
@@ -28,6 +30,7 @@ const PromptCreate = (props) => {
       data: { prompt: prompt }
     })
       .then(res => setCreatedPromptId(res.data.prompt._id))
+      .then(() => this.enqueueSnackbar(messages.signInSuccess, { variant: 'success' }))
       .then(console.log(createdPromptId))
       .catch(console.error)
   }
@@ -48,4 +51,4 @@ const PromptCreate = (props) => {
   )
 }
 
-export default PromptCreate
+export default withSnackbar(withRouter(PromptCreate))

@@ -12,7 +12,7 @@ const Prompts = (props, state) => {
       .catch(console.error)
   }, [])
 
-  const filtedPrompts = prompts.filter(prompt => prompt.category === 'test')
+  const filtedPrompts = prompts.filter(prompt => prompt.category === 'Industrial')
   const item = filtedPrompts[Math.floor(Math.random() * filtedPrompts.length)]
 
   // const promptsJsx = item.map(prompt => (
@@ -26,6 +26,7 @@ const Prompts = (props, state) => {
     <div>
       <h4>Prompts</h4>
       <div>Prompt: {item && item.text}</div>
+      <div>Prompt: {item && item.category}</div>
     </div>
   )
 }
