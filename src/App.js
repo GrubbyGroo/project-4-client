@@ -7,12 +7,12 @@ import SignUp from './auth/components/SignUp'
 import SignIn from './auth/components/SignIn'
 import SignOut from './auth/components/SignOut'
 import ChangePassword from './auth/components/ChangePassword'
-import Prompts from './prompts/components/Prompts'
 import Prompt from './prompts/components/Prompt'
 import Animals from './prompts/components/Animals'
 import Industrial from './prompts/components/Industrial'
 import CreatePrompt from './prompts/components/CreatePrompt'
 import EditPrompt from './prompts/components/EditPrompt'
+import YourPrompts from './prompts/components/YourPrompts'
 import Header from './header/Header'
 import Home from './Home'
 import { SnackbarProvider } from 'notistack'
@@ -43,9 +43,6 @@ class App extends Component {
           <Route exact path='/' render={() => (
             <Home alert={this.alert} setUser={this.setUser} />
           )} />
-          <Route exact path='/prompts' render={() => (
-            <Prompts alert={this.alert} setUser={this.setUser} />
-          )} />
           <Route exact path='/animals' render={() => (
             <Animals alert={this.alert} setUser={this.setUser} />
           )} />
@@ -57,6 +54,12 @@ class App extends Component {
             exact path='/create-prompt'
             render={() => (
               <CreatePrompt alert={this.alert} user={user} />
+            )} />
+          <AuthenticatedRoute
+            user={user}
+            exact path='/your-prompts'
+            render={() => (
+              <YourPrompts alert={this.alert} user={user} />
             )} />
           <Route exact path='/sign-in' render={() => (
             <SignIn alert={this.alert} setUser={this.setUser} />

@@ -28,6 +28,7 @@ const authenticatedOptions = (
     <Button color="inherit"><Link to="/change-password">Change Password</Link></Button>
     <Button color="inherit"><Link to="/sign-out">Sign Out</Link></Button>
     <Button color="inherit"><Link to="/create-prompt">Create A Prompt!</Link></Button>
+    <Button color="inherit"><Link to="/your-prompts">Your Prompts!</Link></Button>
   </React.Fragment>
 )
 

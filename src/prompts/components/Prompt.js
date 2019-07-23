@@ -28,7 +28,7 @@ const Prompt = (props) => {
 
   if (deleted) {
     return <Redirect to={
-      { pathname: '/prompts' }
+      { pathname: '/' }
     } />
   }
 

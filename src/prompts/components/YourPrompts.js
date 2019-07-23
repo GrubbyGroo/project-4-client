@@ -12,15 +12,21 @@ const Prompts = (props, state) => {
       .catch(console.error)
   }, [])
 
-  const filtedPrompts = prompts.filter(prompt => prompt.category === 'industrial')
-  const item = filtedPrompts[Math.floor(Math.random() * filtedPrompts.length)]
-
+  console.log('user', props.user._id)
+  const filtedPrompts = prompts.filter(prompt => prompt.owner === props.user._id)
+  console.log(prompts)
+  console.log('owned', filtedPrompts)
+  const promptsJsx = filtedPrompts.map(prompt => (
+    <ol key={prompt._id}>
+      {console.log(prompt._id)}
+      <Link to={`/prompts/${prompt._id}`}>{prompt.text}</Link>
+    </ol>
+  ))
   console.log(props.location)
   return (
     <div>
-      <h4>Industrial</h4>
-      <div>{item && item.text}</div>
-      <Link to="/industrial" >Get another</Link>
+      <h4>Your Prompts! Click to Edit or Delete</h4>
+      {promptsJsx}
     </div>
   )
 }

@@ -3,6 +3,7 @@ import { withRouter } from 'react-router-dom'
 import { withSnackbar } from 'notistack'
 import { signIn } from '../api'
 import messages from '../messages'
+import { MDBBtn, MDBInput } from 'mdbreact'
 
 class SignIn extends Component {
   constructor () {
@@ -26,7 +27,7 @@ class SignIn extends Component {
     signIn(this.state)
       .then(res => setUser(res.data.user))
       .then(() => enqueueSnackbar(messages.signInSuccess, { variant: 'success' }))
-      .then(() => history.push('/prompts'))
+      .then(() => history.push('/'))
       .catch(error => {
         console.error(error)
         this.setState({ email: '', password: '' })
@@ -40,25 +41,21 @@ class SignIn extends Component {
     return (
       <form className='auth-form' onSubmit={this.onSignIn}>
         <h3>Sign In</h3>
-        <label htmlFor="email">Email</label>
-        <input
+        <MDBInput label="Email"
           required
           type="email"
           name="email"
           value={email}
-          placeholder="Email"
           onChange={this.handleChange}
         />
-        <label htmlFor="password">Password</label>
-        <input
+        <MDBInput label="Password"
           required
           name="password"
           value={password}
           type="password"
-          placeholder="Password"
           onChange={this.handleChange}
         />
-        <button type="submit">Sign In</button>
+        <MDBBtn color="primary" type="submit">Sign In</MDBBtn>
       </form>
     )
   }

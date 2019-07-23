@@ -1,12 +1,12 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { MDBInput, MDBBtn } from 'mdbreact'
 
 // const categories = ['Animals', 'Industrial']
 
 const PromptForm = ({ prompt, handleSubmit, handleChange, cancelPath }) => (
   <form onSubmit={handleSubmit}>
-    <label>Text</label>
-    <input
+    <MDBInput label="Text"
       placeholder="Text"
       value={prompt.text}
       name="text"
@@ -14,16 +14,22 @@ const PromptForm = ({ prompt, handleSubmit, handleChange, cancelPath }) => (
     />
 
     <label>Category</label>
-    <input
-      placeholder="Category"
-      value={prompt.category}
-      name="category"
-      onChange={handleChange}
-    />
+    <select name="category" onChange={handleChange} className="browser-default custom-select">
+      <option
+        value=''
+        default
+      >Select a Category</option>
+      <option
+        value='animals'
+      >Animals</option>
+      <option
+        value='industr'
+      >Industrial</option>
+    </select>
 
-    <button type="submit">Submit</button>
+    <MDBBtn type="submit">Submit</MDBBtn>
     <Link to={cancelPath}>
-      <button>Cancel</button>
+      <MDBBtn color="secondary">Cancel</MDBBtn>
     </Link>
   </form>
 )
