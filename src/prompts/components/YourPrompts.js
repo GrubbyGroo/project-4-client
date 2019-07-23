@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
 import apiUrl from '../../apiConfig'
+import { MDBCard, MDBCardBody, MDBCardTitle, MDBCardText, MDBContainer } from 'mdbreact'
 
 const Prompts = (props, state) => {
   const [prompts, setPrompts] = useState([])
@@ -17,17 +18,20 @@ const Prompts = (props, state) => {
   console.log(prompts)
   console.log('owned', filtedPrompts)
   const promptsJsx = filtedPrompts.map(prompt => (
-    <ol key={prompt._id}>
+    <MDBCardText key={prompt._id}><ol>
       {console.log(prompt._id)}
-      <Link to={`/prompts/${prompt._id}`}>{prompt.text}</Link>
-    </ol>
+      <Link to={`/prompts/${prompt._id}`}>{prompt.text}</Link></ol></MDBCardText>
   ))
   console.log(props.location)
   return (
-    <div>
-      <h4>Your Prompts! Click to Edit or Delete</h4>
-      {promptsJsx}
-    </div>
+    <MDBContainer className='w-responsive text-left mx-auto p-3 mt-2'>
+      <MDBCard>
+        <MDBCardBody>
+          <MDBCardTitle>Click to View, Edit and Delete</MDBCardTitle>
+          <MDBCardText>{promptsJsx}</MDBCardText>
+        </MDBCardBody>
+      </MDBCard>
+    </MDBContainer>
   )
 }
 

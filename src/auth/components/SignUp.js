@@ -3,6 +3,7 @@ import { withRouter } from 'react-router-dom'
 import { withSnackbar } from 'notistack'
 import { signUp, signIn } from '../api'
 import messages from '../messages'
+import { MDBBtn, MDBInput } from 'mdbreact'
 
 class SignUp extends Component {
   constructor () {
@@ -43,8 +44,7 @@ class SignUp extends Component {
       <form className='auth-form' onSubmit={this.onSignUp}>
         <h3>Sign Up</h3>
 
-        <label htmlFor="email">Email</label>
-        <input
+        <MDBInput label="Email"
           required
           name="email"
           value={email}
@@ -52,8 +52,7 @@ class SignUp extends Component {
           placeholder="Email"
           onChange={this.handleChange}
         />
-        <label htmlFor="password">Password</label>
-        <input
+        <MDBInput label="Password"
           required
           name="password"
           value={password}
@@ -61,8 +60,7 @@ class SignUp extends Component {
           placeholder="Password"
           onChange={this.handleChange}
         />
-        <label htmlFor="passwordConfirmation">Confirm Password</label>
-        <input
+        <MDBInput label="Confirm Password"
           required
           name="passwordConfirmation"
           value={passwordConfirmation}
@@ -70,7 +68,7 @@ class SignUp extends Component {
           placeholder="Confirm Password"
           onChange={this.handleChange}
         />
-        <button type="submit">Sign Up</button>
+        <MDBBtn type="submit">Sign Up</MDBBtn>
       </form>
     )
   }
