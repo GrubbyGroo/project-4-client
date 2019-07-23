@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-// import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import axios from 'axios'
 import apiUrl from '../../apiConfig'
 
@@ -27,6 +27,7 @@ const Prompts = (props, state) => {
       <h4>Prompts</h4>
       <div>Prompt: {item && item.text}</div>
       <div>Prompt: {item && item.category}</div>
+      <Link to="/industrial" >Get another</Link>
     </div>
   )
 }
