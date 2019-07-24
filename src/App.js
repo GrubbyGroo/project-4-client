@@ -15,7 +15,7 @@ import YourPrompts from './prompts/components/YourPrompts'
 import Header from './header/Header'
 import Home from './Home'
 import { SnackbarProvider } from 'notistack'
-import mobileImage from './notebook-page.jpg'
+import mobileImage from './npage.jpg'
 
 class App extends Component {
   constructor () {
@@ -42,13 +42,13 @@ class App extends Component {
             <Route exact path='/sign-up' render={() => (
               <SignUp alert={this.alert} setUser={this.setUser} />
             )} />
-            <Route exact path='/' render={() => (
-              <Home alert={this.alert} setUser={this.setUser} />
+            <Route exact path='/' user={user} render={() => (
+              <Home alert={this.alert} user={user} setUser={this.setUser} />
             )} />
-            <Route exact path='/animals' render={() => (
+            <Route exact path='/animals' user={user} render={() => (
               <Prompts alert={this.alert} category="Animals" setUser={this.setUser} />
             )} />
-            <Route exact path='/industrial' render={() => (
+            <Route exact path='/industrial' user={user} render={() => (
               <Prompts alert={this.alert} category="Industrial" setUser={this.setUser} />
             )} />
             <AuthenticatedRoute

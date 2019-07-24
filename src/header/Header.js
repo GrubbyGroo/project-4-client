@@ -27,7 +27,7 @@ const alwaysOptions = (
 )
 
 const Header = ({ user }) => (
-  <MDBNavbar className="mb-4" light>
+  <MDBNavbar className="mb-4 z-depth-1" color="grey lighten-2">
     <MDBContainer>
       <MDBNavbarBrand>
         <MDBIcon icon="pencil-alt" />Always Be Drawing!

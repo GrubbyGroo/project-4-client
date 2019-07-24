@@ -13,6 +13,7 @@
     "dotenv": "4.0.0",
     "dotenv-expand": "4.2.0",
     "fs-extra": "3.0.1",
+    "knuth-shuffle": "^1.0.8",
     "mdbreact": "^4.18.1",
     "notistack": "^0.8.9",
     "object-assign": "4.1.1",
@@ -25,6 +26,7 @@
     "react-select": "^3.0.4",
     "react-toolbox": "^2.0.0-beta.13",
     "resolve": "1.6.0",
+    "underscore": "^1.9.1",
     "url-loader": "0.6.2"
   },
   "scripts": {

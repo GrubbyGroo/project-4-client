@@ -1,9 +1,9 @@
 import React from 'react'
 import PromptButton from './prompts/components/PromptButtons'
 
-const Home = (props) => {
+const Home = ({ user }) => {
   return (
-    <PromptButton />
+    <PromptButton user={ user }/>
   )
 }
 
