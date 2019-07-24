@@ -26,7 +26,7 @@ const PromptButton = (props) => {
           <MDBCol key={item} sm="6">
             <MDBCard className="text-center white-text" color="grey lighten-2">
               <MDBCardBody>
-                <Link to={`/${item}`}><MDBBtn gradient="peach" size="lg">{item.toUpperCase()}</MDBBtn></Link>
+                <Link to={`/${item}`}><MDBBtn color="dark" size="lg">{item.toUpperCase()}</MDBBtn></Link>
               </MDBCardBody>
             </MDBCard>
           </MDBCol>

@@ -17,7 +17,7 @@ const Prompts = (props, state) => {
       .catch(() => {
         props.enqueueSnackbar(messages.deleteFailure, { variant: 'error' })
       })
-  }, [props])
+  }, [])
 
   const filtedPrompts = prompts.filter(prompt => prompt.category === props.category.toLowerCase())
 
