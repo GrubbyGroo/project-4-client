@@ -8,8 +8,7 @@ import SignIn from './auth/components/SignIn'
 import SignOut from './auth/components/SignOut'
 import ChangePassword from './auth/components/ChangePassword'
 import Prompt from './prompts/components/Prompt'
-import Animals from './prompts/components/Animals'
-import Industrial from './prompts/components/Industrial'
+import Prompts from './prompts/components/Prompts'
 import CreatePrompt from './prompts/components/CreatePrompt'
 import EditPrompt from './prompts/components/EditPrompt'
 import YourPrompts from './prompts/components/YourPrompts'
@@ -44,10 +43,10 @@ class App extends Component {
             <Home alert={this.alert} setUser={this.setUser} />
           )} />
           <Route exact path='/animals' render={() => (
-            <Animals alert={this.alert} setUser={this.setUser} />
+            <Prompts alert={this.alert} category="Animals" setUser={this.setUser} />
           )} />
           <Route exact path='/industrial' render={() => (
-            <Industrial alert={this.alert} setUser={this.setUser} />
+            <Prompts alert={this.alert} category="Industrial" setUser={this.setUser} />
           )} />
           <AuthenticatedRoute
             user={user}
