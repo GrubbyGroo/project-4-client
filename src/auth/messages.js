@@ -3,6 +3,7 @@ export default {
   signUpFailure: 'Registration failed. Email may be taked, or passwords' +
    ' don\'t match.',
   signInSuccess: 'Welcome!',
+  timeUp: 'TIME UP!',
   getSuccess: 'Your Prompt Above!',
   createSuccess: 'Created!',
   deleteSuccess: 'Deleted!',

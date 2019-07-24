@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { MDBBtn, MDBCardBody, MDBRow, MDBCol, MDBCard, MDBContainer, MDBCardTitle, MDBCardText } from 'mdbreact'
-const categories = ['animals', 'industrial']
+const categories = ['animals', 'industrial', 'people', 'food']
 const unauthenticatedOptions = (
   <React.Fragment>
     <MDBCardTitle>Click a Category Below to Get a Prompt!</MDBCardTitle>
@@ -17,16 +17,16 @@ const authenticatedOptions = (
 
 const PromptButton = (props) => {
   return (
-    <MDBContainer>
+    <MDBContainer classNanme="p-5">
       <MDBCard className="text-center" color="grey lighten-2">
         { props.user ? authenticatedOptions : unauthenticatedOptions }
       </MDBCard>
       <MDBRow className="mt-5 mb-4">
         {categories.map(item =>
           <MDBCol key={item} sm="6">
-            <MDBCard className="text-center white-text" color="grey lighten-2">
+            <MDBCard className="text-center white-text mb-4 " color="grey lighten-2">
               <MDBCardBody>
-                <Link to={`/${item}`}><MDBBtn gradient="peach" size="lg">{item.toUpperCase()}</MDBBtn></Link>
+                <Link to={`/${item}`}><MDBBtn color="elegant" size="lg">{item.toUpperCase()}</MDBBtn></Link>
               </MDBCardBody>
             </MDBCard>
           </MDBCol>

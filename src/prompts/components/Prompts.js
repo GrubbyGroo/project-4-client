@@ -17,15 +17,15 @@ const Prompts = (props, state) => {
       .catch(() => {
         props.enqueueSnackbar(messages.deleteFailure, { variant: 'error' })
       })
-  }, [props])
+  }, [])
 
   const filtedPrompts = prompts.filter(prompt => prompt.category === props.category.toLowerCase())
 
   const shuffler = shuffle(filtedPrompts).slice(0, 1)
 
   return (
-    <MDBContainer className='w-responsive text-center mx-auto p-3 mt-2'>
-      <MDBCard>
+    <MDBContainer className='w-responsive text-center p-3 mb-4 mt-2'>
+      <MDBCard className="mt-2">
         <MDBCardBody>
           <MDBCardText>{props.category}</MDBCardText>
           <MDBCardTitle>{shuffler[0] && shuffler[0].text}</MDBCardTitle>

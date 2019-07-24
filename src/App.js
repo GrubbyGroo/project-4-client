@@ -51,6 +51,12 @@ class App extends Component {
             <Route exact path='/industrial' user={user} render={() => (
               <Prompts alert={this.alert} category="Industrial" setUser={this.setUser} />
             )} />
+            <Route exact path='/food' user={user} render={() => (
+              <Prompts alert={this.alert} category="Food" setUser={this.setUser} />
+            )} />
+            <Route exact path='/people' user={user} render={() => (
+              <Prompts alert={this.alert} category="People" setUser={this.setUser} />
+            )} />
             <AuthenticatedRoute
               user={user}
               exact path='/create-prompt'
