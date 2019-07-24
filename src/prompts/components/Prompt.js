@@ -2,7 +2,9 @@ import React, { useState, useEffect } from 'react'
 import { withRouter, Redirect, Link } from 'react-router-dom'
 import axios from 'axios'
 import apiUrl from '../../apiConfig'
+import { withSnackbar } from 'notistack'
 import { MDBCard, MDBCardBody, MDBCardTitle, MDBBtn, MDBContainer } from 'mdbreact'
+import messages from '../../auth/messages'
 
 const Prompt = (props) => {
   const [prompt, setPrompt] = useState('')
@@ -11,7 +13,9 @@ const Prompt = (props) => {
   useEffect(() => {
     axios(`${apiUrl}/prompts/${props.match.params.id}`)
       .then(res => setPrompt(res.data.prompt))
-      .catch(console.error)
+      .catch(() => {
+        props.enqueueSnackbar(messages.editFailure, { variant: 'error' })
+      })
   }, [])
 
   const destroy = (user) => {
@@ -23,7 +27,10 @@ const Prompt = (props) => {
       method: 'DELETE'
     })
       .then(() => setDeleted(true))
-      .catch(console.error)
+      .then(() => props.enqueueSnackbar(messages.deleteSuccess, { variant: 'success' }))
+      .catch(() => {
+        props.enqueueSnackbar(messages.deleteFailure, { variant: 'error' })
+      })
   }
 
   if (deleted) {
@@ -53,4 +60,4 @@ const Prompt = (props) => {
   )
 }
 
-export default withRouter(Prompt)
+export default withSnackbar(withRouter(Prompt))

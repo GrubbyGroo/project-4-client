@@ -2,8 +2,9 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
 import { shuffle } from 'underscore'
-
+import messages from '../../auth/messages'
 import apiUrl from '../../apiConfig'
+import { withSnackbar } from 'notistack'
 import { MDBCard, MDBCardBody, MDBCardTitle, MDBCardText, MDBContainer, MDBBtn } from 'mdbreact'
 
 const Prompts = (props, state) => {
@@ -12,9 +13,11 @@ const Prompts = (props, state) => {
   useEffect(() => {
     axios(`${apiUrl}/prompts`)
       .then(res => setPrompts(res.data.prompts))
-      .then()
-      .catch(console.error)
-  }, [])
+      .then(() => props.enqueueSnackbar(messages.getSuccess, { variant: 'success' }))
+      .catch(() => {
+        props.enqueueSnackbar(messages.deleteFailure, { variant: 'error' })
+      })
+  }, [props])
 
   const filtedPrompts = prompts.filter(prompt => prompt.category === props.category.toLowerCase())
 
@@ -26,7 +29,7 @@ const Prompts = (props, state) => {
         <MDBCardBody>
           <MDBCardText>{props.category}</MDBCardText>
           <MDBCardTitle>{shuffler[0] && shuffler[0].text}</MDBCardTitle>
-          <Link to={`/${props.category.toLowerCase()}`} ><MDBBtn outline color="primary">Get another</MDBBtn>
+          <Link to={`/${props.category.toLowerCase()}`}><MDBBtn outline color="primary">Get another</MDBBtn>
           </Link>
           <Link to={'/'} ><MDBBtn outline color="warning">Go Back</MDBBtn></Link>
         </MDBCardBody>
@@ -35,4 +38,4 @@ const Prompts = (props, state) => {
   )
 }
 
-export default Prompts
+export default withSnackbar(Prompts)

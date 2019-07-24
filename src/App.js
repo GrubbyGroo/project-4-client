@@ -35,7 +35,7 @@ class App extends Component {
 
     return (
 
-      <SnackbarProvider maxSnack={3}>
+      <SnackbarProvider maxSnack={2}>
         <Header user={user} />
         <div className="App" style={{ backgroundImage: `url(${mobileImage})` }} >
           <main className="container">
