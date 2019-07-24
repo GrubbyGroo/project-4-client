@@ -3,13 +3,14 @@ import axios from 'axios'
 import { withRouter, Redirect } from 'react-router-dom'
 import apiUrl from '../../apiConfig'
 import PromptForm from './PromptForm'
+import { withSnackbar } from 'notistack'
+import messages from '../../auth/messages'
 
 const EditPrompt = (props) => {
   const [prompt, setPrompt] = useState({ text: '', category: '' })
   const [updated, setUpdated] = useState(false)
 
   useEffect(() => {
-    console.log(props.match.params.id)
     axios(`${apiUrl}/prompts/${props.match.params.id}`)
       .then(res => setPrompt(res.data.prompt))
       .catch(console.error)
@@ -32,22 +33,24 @@ const EditPrompt = (props) => {
       data: { prompt: prompt }
     })
       .then(() => setUpdated(true))
-      .catch(console.error)
+      .then(() => props.enqueueSnackbar(messages.editSuccess, { variant: 'success' }))
+      .catch(() => {
+        props.enqueueSnackbar(messages.editFailure, { variant: 'error' })
+      })
   }
   if (updated) {
     return <Redirect to={`/prompts/${props.match.params.id}`} />
   }
   return (
     <div>
-    test
       <PromptForm
         prompt={prompt}
         handleChange={handleChange}
         handleSubmit={handleSubmit}
-        cancelPath={'/prompts'}
+        cancelPath={`/prompts/${props.match.params.id}`}
       />
     </div>
   )
 }
 
-export default withRouter(EditPrompt)
+export default withSnackbar(withRouter(EditPrompt))

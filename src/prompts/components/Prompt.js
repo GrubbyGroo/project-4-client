@@ -2,13 +2,13 @@ import React, { useState, useEffect } from 'react'
 import { withRouter, Redirect, Link } from 'react-router-dom'
 import axios from 'axios'
 import apiUrl from '../../apiConfig'
+import { MDBCard, MDBCardBody, MDBCardTitle, MDBBtn, MDBContainer } from 'mdbreact'
 
 const Prompt = (props) => {
   const [prompt, setPrompt] = useState('')
   const [deleted, setDeleted] = useState(false)
 
   useEffect(() => {
-    console.log(props.match.params.id)
     axios(`${apiUrl}/prompts/${props.match.params.id}`)
       .then(res => setPrompt(res.data.prompt))
       .catch(console.error)
@@ -34,18 +34,22 @@ const Prompt = (props) => {
 
   const ownerButtons = (
     <div>
-      <button onClick={destroy}>Delete Prompt</button>
+      <MDBBtn type="submit" onClick={destroy}>Delete Prompt</MDBBtn>
       <Link to={`/prompts/${props.match.params.id}/edit`}>
-        <button>Edit</button>
+        <MDBBtn>Edit</MDBBtn>
       </Link>
     </div>
   )
 
   return (
-    <div>
-      <h4>{prompt.text}</h4>
-      {props.user && props.user._id === prompt.owner ? ownerButtons : <p>{props.user ? 'You don\'t own this prompt' : 'Sign in to edit your prompts'}</p>}
-    </div>
+    <MDBContainer className='w-responsive text-left mx-auto p-3 mt-2'>
+      <MDBCard>
+        <MDBCardBody>
+          <MDBCardTitle>{prompt.text}</MDBCardTitle>
+          {props.user && props.user._id === prompt.owner ? ownerButtons : <p>{props.user ? 'You don\'t own this prompt' : 'Sign in to edit your prompts'}</p>}
+        </MDBCardBody>
+      </MDBCard>
+    </MDBContainer>
   )
 }
 

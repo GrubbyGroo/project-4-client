@@ -4,6 +4,7 @@ import { Redirect, withRouter } from 'react-router-dom'
 import { withSnackbar } from 'notistack'
 import apiUrl from '../../apiConfig'
 import PromptForm from './PromptForm'
+import { MDBCard, MDBCardBody, MDBContainer, MDBCardTitle } from 'mdbreact'
 import messages from '../../auth/messages'
 
 const PromptCreate = (props) => {
@@ -30,9 +31,10 @@ const PromptCreate = (props) => {
       data: { prompt: prompt }
     })
       .then(res => setCreatedPromptId(res.data.prompt._id))
-      .then(() => this.enqueueSnackbar(messages.signInSuccess, { variant: 'success' }))
-      .then(console.log(createdPromptId))
-      .catch(console.error)
+      .then(() => props.enqueueSnackbar(messages.createSuccess, { variant: 'success' }))
+      .catch(() => {
+        props.enqueueSnackbar(messages.createFailure, { variant: 'error' })
+      })
   }
 
   if (createdPromptId) {
@@ -40,14 +42,19 @@ const PromptCreate = (props) => {
   }
 
   return (
-    <div>
-      <PromptForm
-        prompt={prompt}
-        handleChange={handleChange}
-        handleSubmit={handleSubmit}
-        cancelPath="/"
-      />
-    </div>
+    <MDBContainer className='w-responsive text-center mx-auto p-3 mt-2'>
+      <MDBCard>
+        <MDBCardBody>
+          <MDBCardTitle>Create a Prompt</MDBCardTitle>
+          <PromptForm
+            prompt={prompt}
+            handleChange={handleChange}
+            handleSubmit={handleSubmit}
+            cancelPath="/"
+          />
+        </MDBCardBody>
+      </MDBCard>
+    </MDBContainer>
   )
 }
 

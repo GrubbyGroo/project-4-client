@@ -3,7 +3,7 @@ import { withRouter } from 'react-router-dom'
 import { withSnackbar } from 'notistack'
 import { signUp, signIn } from '../api'
 import messages from '../messages'
-import { MDBBtn, MDBInput } from 'mdbreact'
+import { MDBBtn, MDBInput, MDBContainer, MDBCard, MDBCardBody } from 'mdbreact'
 
 class SignUp extends Component {
   constructor () {
@@ -41,35 +41,41 @@ class SignUp extends Component {
     const { email, password, passwordConfirmation } = this.state
 
     return (
-      <form className='auth-form' onSubmit={this.onSignUp}>
-        <h3>Sign Up</h3>
+      <MDBContainer>
+        <MDBCard className="text-center">
+          <MDBCardBody>
+            <form className='auth-form' onSubmit={this.onSignUp}>
+              <h3>Sign Up</h3>
 
-        <MDBInput label="Email"
-          required
-          name="email"
-          value={email}
-          type="email"
-          placeholder="Email"
-          onChange={this.handleChange}
-        />
-        <MDBInput label="Password"
-          required
-          name="password"
-          value={password}
-          type="password"
-          placeholder="Password"
-          onChange={this.handleChange}
-        />
-        <MDBInput label="Confirm Password"
-          required
-          name="passwordConfirmation"
-          value={passwordConfirmation}
-          type="password"
-          placeholder="Confirm Password"
-          onChange={this.handleChange}
-        />
-        <MDBBtn type="submit">Sign Up</MDBBtn>
-      </form>
+              <MDBInput label="Email"
+                required
+                name="email"
+                value={email}
+                type="email"
+                placeholder="Email"
+                onChange={this.handleChange}
+              />
+              <MDBInput label="Password"
+                required
+                name="password"
+                value={password}
+                type="password"
+                placeholder="Password"
+                onChange={this.handleChange}
+              />
+              <MDBInput label="Confirm Password"
+                required
+                name="passwordConfirmation"
+                value={passwordConfirmation}
+                type="password"
+                placeholder="Confirm Password"
+                onChange={this.handleChange}
+              />
+              <MDBBtn type="submit">Sign Up</MDBBtn>
+            </form>
+          </MDBCardBody>
+        </MDBCard>
+      </MDBContainer>
     )
   }
 }

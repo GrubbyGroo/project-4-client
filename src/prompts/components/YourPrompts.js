@@ -13,16 +13,12 @@ const Prompts = (props, state) => {
       .catch(console.error)
   }, [])
 
-  console.log('user', props.user._id)
   const filtedPrompts = prompts.filter(prompt => prompt.owner === props.user._id)
-  console.log(prompts)
-  console.log('owned', filtedPrompts)
   const promptsJsx = filtedPrompts.map(prompt => (
     <MDBCardText key={prompt._id}><ol>
-      {console.log(prompt._id)}
       <Link to={`/prompts/${prompt._id}`}>{prompt.text}</Link></ol></MDBCardText>
   ))
-  console.log(props.location)
+
   return (
     <MDBContainer className='w-responsive text-left mx-auto p-3 mt-2'>
       <MDBCard>

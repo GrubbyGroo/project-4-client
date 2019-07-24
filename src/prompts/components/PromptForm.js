@@ -23,7 +23,7 @@ const PromptForm = ({ prompt, handleSubmit, handleChange, cancelPath }) => (
         value='animals'
       >Animals</option>
       <option
-        value='industr'
+        value='industrial'
       >Industrial</option>
     </select>
 

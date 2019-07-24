@@ -3,7 +3,7 @@ import { withRouter } from 'react-router-dom'
 import { withSnackbar } from 'notistack'
 import { signIn } from '../api'
 import messages from '../messages'
-import { MDBBtn, MDBInput } from 'mdbreact'
+import { MDBBtn, MDBInput, MDBContainer, MDBCard, MDBCardBody } from 'mdbreact'
 
 class SignIn extends Component {
   constructor () {
@@ -39,24 +39,30 @@ class SignIn extends Component {
     const { email, password } = this.state
 
     return (
-      <form className='auth-form' onSubmit={this.onSignIn}>
-        <h3>Sign In</h3>
-        <MDBInput label="Email"
-          required
-          type="email"
-          name="email"
-          value={email}
-          onChange={this.handleChange}
-        />
-        <MDBInput label="Password"
-          required
-          name="password"
-          value={password}
-          type="password"
-          onChange={this.handleChange}
-        />
-        <MDBBtn color="primary" type="submit">Sign In</MDBBtn>
-      </form>
+      <MDBContainer>
+        <MDBCard className="text-center">
+          <MDBCardBody>
+            <form className='auth-form' onSubmit={this.onSignIn}>
+              <h3>Sign In</h3>
+              <MDBInput label="Email"
+                required
+                type="email"
+                name="email"
+                value={email}
+                onChange={this.handleChange}
+              />
+              <MDBInput label="Password"
+                required
+                name="password"
+                value={password}
+                type="password"
+                onChange={this.handleChange}
+              />
+              <MDBBtn color="primary" type="submit">Sign In</MDBBtn>
+            </form>
+          </MDBCardBody>
+        </MDBCard>
+      </MDBContainer>
     )
   }
 }

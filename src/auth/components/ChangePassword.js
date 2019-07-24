@@ -3,6 +3,7 @@ import { withRouter } from 'react-router-dom'
 import { withSnackbar } from 'notistack'
 import { changePassword } from '../api'
 import messages from '../messages'
+import { MDBBtn, MDBInput, MDBContainer, MDBCard, MDBCardBody } from 'mdbreact'
 
 class ChangePassword extends Component {
   constructor () {
@@ -37,29 +38,34 @@ class ChangePassword extends Component {
     const { oldPassword, newPassword } = this.state
 
     return (
-      <form className='auth-form' onSubmit={this.onChangePassword}>
-        <h3>Change Password</h3>
+      <MDBContainer>
+        <MDBCard className="text-center">
+          <MDBCardBody>
+            <form className='auth-form' onSubmit={this.onChangePassword}>
+              <h3>Change Password</h3>
 
-        <label htmlFor="oldpw">Old Password</label>
-        <input
-          required
-          name="oldPassword"
-          value={oldPassword}
-          type="password"
-          placeholder="Old Password"
-          onChange={this.handleChange}
-        />
-        <label htmlFor="newPassword">New Password</label>
-        <input
-          required
-          name="newPassword"
-          value={newPassword}
-          type="password"
-          placeholder="New Password"
-          onChange={this.handleChange}
-        />
-        <button type="submit">Change Password</button>
-      </form>
+              <MDBInput label="Old Password"
+                required
+                name="oldPassword"
+                value={oldPassword}
+                type="password"
+                placeholder="Old Password"
+                onChange={this.handleChange}
+              />
+
+              <MDBInput label="New Password"
+                required
+                name="newPassword"
+                value={newPassword}
+                type="password"
+                placeholder="New Password"
+                onChange={this.handleChange}
+              />
+              <MDBBtn color="primary" type="submit">Change Password</MDBBtn>
+            </form>
+          </MDBCardBody>
+        </MDBCard>
+      </MDBContainer>
     )
   }
 }

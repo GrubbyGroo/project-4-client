@@ -5,12 +5,15 @@ const categories = ['animals', 'industrial']
 const PromptButton = (props) => {
   return (
     <MDBContainer>
-      <MDBRow className="mb-4">
+      <MDBCard className="text-center">
+        <h4 className="text-center">Pick a Prompt Category Below!</h4>
+      </MDBCard>
+      <MDBRow className="mt-5 mb-4">
         {categories.map(item =>
           <MDBCol key={item} sm="6">
             <MDBCard className="text-center">
               <MDBCardBody>
-                <MDBBtn gradient="peach" size="lg"><Link to={`/${item}`}>{item.toUpperCase()}</Link></MDBBtn>
+                <Link to={`/${item}`}><MDBBtn gradient="peach" size="lg">{item.toUpperCase()}</MDBBtn></Link>
               </MDBCardBody>
             </MDBCard>
           </MDBCol>

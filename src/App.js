@@ -15,6 +15,7 @@ import YourPrompts from './prompts/components/YourPrompts'
 import Header from './header/Header'
 import Home from './Home'
 import { SnackbarProvider } from 'notistack'
+import mobileImage from './notebook-page.jpg'
 
 class App extends Component {
   constructor () {
@@ -33,54 +34,58 @@ class App extends Component {
     const { user } = this.state
 
     return (
+
       <SnackbarProvider maxSnack={3}>
         <Header user={user} />
-        <main className="container">
-          <Route exact path='/sign-up' render={() => (
-            <SignUp alert={this.alert} setUser={this.setUser} />
-          )} />
-          <Route exact path='/' render={() => (
-            <Home alert={this.alert} setUser={this.setUser} />
-          )} />
-          <Route exact path='/animals' render={() => (
-            <Prompts alert={this.alert} category="Animals" setUser={this.setUser} />
-          )} />
-          <Route exact path='/industrial' render={() => (
-            <Prompts alert={this.alert} category="Industrial" setUser={this.setUser} />
-          )} />
-          <AuthenticatedRoute
-            user={user}
-            exact path='/create-prompt'
-            render={() => (
-              <CreatePrompt alert={this.alert} user={user} />
+        <div className="App" style={{ backgroundImage: `url(${mobileImage})` }} >
+          <main className="container">
+            <Route exact path='/sign-up' render={() => (
+              <SignUp alert={this.alert} setUser={this.setUser} />
             )} />
-          <AuthenticatedRoute
-            user={user}
-            exact path='/your-prompts'
-            render={() => (
-              <YourPrompts alert={this.alert} user={user} />
+            <Route exact path='/' render={() => (
+              <Home alert={this.alert} setUser={this.setUser} />
             )} />
-          <Route exact path='/sign-in' render={() => (
-            <SignIn alert={this.alert} setUser={this.setUser} />
-          )} />
-          <AuthenticatedRoute user={user} exact path='/sign-out' render={() => (
-            <SignOut alert={this.alert} clearUser={this.clearUser} user={user} />
-          )} />
-          <Route
-            exact path='/prompts/:id'
-            render={() => (
-              <Prompt user={user} />
+            <Route exact path='/animals' render={() => (
+              <Prompts alert={this.alert} category="Animals" setUser={this.setUser} />
             )} />
-          <Route
-            exact path='/prompts/:id/edit'
-            render={() => (
-              <EditPrompt user={user} />
+            <Route exact path='/industrial' render={() => (
+              <Prompts alert={this.alert} category="Industrial" setUser={this.setUser} />
             )} />
-          <AuthenticatedRoute user={user} path='/change-password' render={() => (
-            <ChangePassword alert={this.alert} user={user} />
-          )} />
-        </main>
+            <AuthenticatedRoute
+              user={user}
+              exact path='/create-prompt'
+              render={() => (
+                <CreatePrompt alert={this.alert} user={user} />
+              )} />
+            <AuthenticatedRoute
+              user={user}
+              exact path='/your-prompts'
+              render={() => (
+                <YourPrompts alert={this.alert} user={user} />
+              )} />
+            <Route exact path='/sign-in' render={() => (
+              <SignIn alert={this.alert} setUser={this.setUser} />
+            )} />
+            <AuthenticatedRoute user={user} exact path='/sign-out' render={() => (
+              <SignOut alert={this.alert} clearUser={this.clearUser} user={user} />
+            )} />
+            <Route
+              exact path='/prompts/:id'
+              render={() => (
+                <Prompt user={user} />
+              )} />
+            <Route
+              exact path='/prompts/:id/edit'
+              render={() => (
+                <EditPrompt user={user} />
+              )} />
+            <AuthenticatedRoute user={user} path='/change-password' render={() => (
+              <ChangePassword alert={this.alert} user={user} />
+            )} />
+          </main>
+        </div>
       </SnackbarProvider>
+
     )
   }
 }
