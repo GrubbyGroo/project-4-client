@@ -3,7 +3,7 @@ import { withRouter, Redirect, Link } from 'react-router-dom'
 import axios from 'axios'
 import apiUrl from '../../apiConfig'
 import { withSnackbar } from 'notistack'
-import { MDBCard, MDBCardBody, MDBCardTitle, MDBBtn, MDBContainer } from 'mdbreact'
+import { MDBCard, MDBCardBody, MDBCardTitle, MDBBtn, MDBContainer, MDBCardText } from 'mdbreact'
 import messages from '../../auth/messages'
 
 const Prompt = (props) => {
@@ -14,7 +14,7 @@ const Prompt = (props) => {
     axios(`${apiUrl}/prompts/${props.match.params.id}`)
       .then(res => setPrompt(res.data.prompt))
       .catch(() => {
-        props.enqueueSnackbar(messages.editFailure, { variant: 'error' })
+        props.enqueueSnackbar(messages.getFailure, { variant: 'error' })
       })
   }, [])
 
@@ -35,16 +35,16 @@ const Prompt = (props) => {
 
   if (deleted) {
     return <Redirect to={
-      { pathname: '/' }
+      { pathname: '/your-prompts' }
     } />
   }
 
   const ownerButtons = (
     <div>
-      <MDBBtn type="submit" onClick={destroy}>Delete Prompt</MDBBtn>
       <Link to={`/prompts/${props.match.params.id}/edit`}>
-        <MDBBtn>Edit</MDBBtn>
+        <MDBBtn color="elegant">Edit</MDBBtn>
       </Link>
+      <MDBBtn color="mdb-color" type="submit" onClick={destroy}>Delete Prompt</MDBBtn>
     </div>
   )
 
@@ -52,7 +52,8 @@ const Prompt = (props) => {
     <MDBContainer className='w-responsive text-left mx-auto p-3 mt-2'>
       <MDBCard>
         <MDBCardBody>
-          <MDBCardTitle>{prompt.text}</MDBCardTitle>
+          <MDBCardTitle>Text: {prompt.text}</MDBCardTitle>
+          <MDBCardText>Category: {prompt.category}</MDBCardText>
           {props.user && props.user._id === prompt.owner ? ownerButtons : <p>{props.user ? 'You don\'t own this prompt' : 'Sign in to edit your prompts'}</p>}
         </MDBCardBody>
       </MDBCard>

@@ -19,7 +19,7 @@ const Prompts = (props, state) => {
       })
       .then(() => props.enqueueSnackbar(messages.getSuccess, { variant: 'success' }))
       .catch(() => {
-        props.enqueueSnackbar(messages.deleteFailure, { variant: 'error' })
+        props.enqueueSnackbar(messages.getFailure, { variant: 'error' })
       })
   }, [])
 

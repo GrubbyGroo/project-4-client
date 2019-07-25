@@ -34,9 +34,9 @@ const PromptForm = ({ prompt, handleSubmit, handleChange, cancelPath }) => (
       >Food</option>
     </select>
 
-    <MDBBtn type="submit">Submit</MDBBtn>
+    <MDBBtn color="blue-grey" type="submit">Submit</MDBBtn>
     <Link to={cancelPath}>
-      <MDBBtn color="secondary">Cancel</MDBBtn>
+      <MDBBtn color="mdb-color">Cancel</MDBBtn>
     </Link>
   </form>
 )

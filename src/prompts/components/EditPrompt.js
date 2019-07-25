@@ -5,6 +5,7 @@ import apiUrl from '../../apiConfig'
 import PromptForm from './PromptForm'
 import { withSnackbar } from 'notistack'
 import messages from '../../auth/messages'
+import { MDBCard, MDBCardBody, MDBContainer, MDBCardTitle } from 'mdbreact'
 
 const EditPrompt = (props) => {
   const [prompt, setPrompt] = useState({ text: '', category: '' })
@@ -13,7 +14,9 @@ const EditPrompt = (props) => {
   useEffect(() => {
     axios(`${apiUrl}/prompts/${props.match.params.id}`)
       .then(res => setPrompt(res.data.prompt))
-      .catch(console.error)
+      .catch(() => {
+        props.enqueueSnackbar(messages.getFailure, { variant: 'error' })
+      })
   }, [])
 
   const handleChange = event => {
@@ -42,14 +45,19 @@ const EditPrompt = (props) => {
     return <Redirect to={`/prompts/${props.match.params.id}`} />
   }
   return (
-    <div>
-      <PromptForm
-        prompt={prompt}
-        handleChange={handleChange}
-        handleSubmit={handleSubmit}
-        cancelPath={`/prompts/${props.match.params.id}`}
-      />
-    </div>
+    <MDBContainer className='w-responsive text-center mx-auto p-3 mt-2'>
+      <MDBCard>
+        <MDBCardBody>
+          <MDBCardTitle>Edit Your Prompt</MDBCardTitle>
+          <PromptForm
+            prompt={prompt}
+            handleChange={handleChange}
+            handleSubmit={handleSubmit}
+            cancelPath={`/prompts/${props.match.params.id}`}
+          />
+        </MDBCardBody>
+      </MDBCard>
+    </MDBContainer>
   )
 }
 
