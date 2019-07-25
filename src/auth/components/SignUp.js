@@ -16,6 +16,12 @@ class SignUp extends Component {
     }
   }
 
+  clearUserInfo = () => this.setState({
+    email: '',
+    password: '',
+    passwordConfirmation: ''
+  })
+
   handleChange = event => this.setState({
     [event.target.name]: event.target.value
   })
@@ -28,10 +34,13 @@ class SignUp extends Component {
     signUp(this.state)
       .then(() => signIn(this.state))
       .then(res => setUser(res.data.user))
+      .then(response => {
+        this.clearUserInfo()
+      })
       .then(() => enqueueSnackbar(messages.signUpSuccess, { variant: 'success' }))
       .then(() => history.push('/'))
-      .catch(error => {
-        console.error(error)
+      .catch(() => {
+        this.setState({ email: '', password: '' })
         this.setState({ email: '', password: '', passwordConfirmation: '' })
         enqueueSnackbar(messages.signUpFailure, { variant: 'error' })
       })
@@ -71,7 +80,7 @@ class SignUp extends Component {
                 placeholder="Confirm Password"
                 onChange={this.handleChange}
               />
-              <MDBBtn type="submit">Sign Up</MDBBtn>
+              <MDBBtn color="blue-grey" type="submit">Sign Up</MDBBtn>
             </form>
           </MDBCardBody>
         </MDBCard>

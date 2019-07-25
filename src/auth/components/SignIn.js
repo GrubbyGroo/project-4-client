@@ -28,8 +28,7 @@ class SignIn extends Component {
       .then(res => setUser(res.data.user))
       .then(() => enqueueSnackbar(messages.signInSuccess, { variant: 'success' }))
       .then(() => history.push('/'))
-      .catch(error => {
-        console.error(error)
+      .catch(() => {
         this.setState({ email: '', password: '' })
         enqueueSnackbar(messages.signInFailure, { variant: 'error' })
       })
@@ -58,7 +57,7 @@ class SignIn extends Component {
                 type="password"
                 onChange={this.handleChange}
               />
-              <MDBBtn color="primary" type="submit">Sign In</MDBBtn>
+              <MDBBtn color="blue-grey" type="submit">Sign In</MDBBtn>
             </form>
           </MDBCardBody>
         </MDBCard>

@@ -1,10 +1,11 @@
 export default {
   signUpSuccess: 'Succesfully registered! You\'ve been signed in as well.',
-  signUpFailure: 'Registration failed. Email may be taked, or passwords' +
+  signUpFailure: 'Registration failed. Email may be taken, or passwords' +
    ' don\'t match.',
   signInSuccess: 'Welcome!',
   timeUp: 'TIME UP!',
   getSuccess: 'Your Prompt Above!',
+  getFailure: 'Failed to Get Prompts. Please Try Again.',
   createSuccess: 'Created!',
   deleteSuccess: 'Deleted!',
   deleteFailure: 'Failed to Create, Please Try Again.',
