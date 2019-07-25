@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { MDBBtn, MDBCardBody, MDBRow, MDBCol, MDBCard, MDBContainer, MDBCardTitle, MDBCardText } from 'mdbreact'
-const categories = ['animals', 'industrial', 'people', 'food']
+const categories = ['animals', 'industrial', 'people', 'food', 'open-ended', 'creative']
 const unauthenticatedOptions = (
   <React.Fragment>
     <h2 className="MDBCardTitle">A Random Drawing Prompt Generator!</h2>

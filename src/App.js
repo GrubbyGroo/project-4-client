@@ -35,7 +35,7 @@ class App extends Component {
 
     return (
 
-      <SnackbarProvider maxSnack={2}>
+      <SnackbarProvider autoHideDuration={2000} maxSnack={2}>
         <Header user={user} />
         <div className="App" style={{ backgroundImage: `url(${mobileImage})` }} >
           <main className="container">
@@ -56,6 +56,12 @@ class App extends Component {
             )} />
             <Route exact path='/people' user={user} render={() => (
               <Prompts alert={this.alert} category="People" setUser={this.setUser} />
+            )} />
+            <Route exact path='/open-ended' user={user} render={() => (
+              <Prompts alert={this.alert} category="Open-Ended" setUser={this.setUser} />
+            )} />
+            <Route exact path='/creative' user={user} render={() => (
+              <Prompts alert={this.alert} category="Creative" setUser={this.setUser} />
             )} />
             <AuthenticatedRoute
               user={user}

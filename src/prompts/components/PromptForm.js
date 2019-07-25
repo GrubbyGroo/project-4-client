@@ -32,6 +32,12 @@ const PromptForm = ({ prompt, handleSubmit, handleChange, cancelPath }) => (
       <option
         value='food'
       >Food</option>
+      <option
+        value='open-ended'
+      >Open Ended</option>
+      <option
+        value='creative'
+      >Creative</option>
     </select>
 
     <MDBBtn color="blue-grey" type="submit">Submit</MDBBtn>
