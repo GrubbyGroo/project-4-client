@@ -3,8 +3,8 @@
 # Connected Sites
 
 -   Back-End Repo: <https://github.com/DiGregorioC/project-4-api>
--   Application: <https://github.com/DiGregorioC/project-4-client>
 -   Deployed Site: <https://digregorioc.github.io/project-4-client/>
+-   Heroku Site: <https://protected-chamber-86780.herokuapp.com/>
 
 # Photo of Application
 
@@ -77,7 +77,7 @@
 -   As a User I want to be able to see all of my added prompts
 
     ## WireFrame
-    
+
     ![Website Photo](https://i.imgur.com/iumUNGN.png)
     ![Website Photo](https://i.imgur.com/jjJdOlW.png)
     ![Website Photo](https://i.imgur.com/J8VOTHj.png)
