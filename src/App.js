@@ -15,7 +15,7 @@ import YourPrompts from './prompts/components/YourPrompts'
 import Header from './header/Header'
 import Home from './Home'
 import { SnackbarProvider } from 'notistack'
-import mobileImage from './npage.jpg'
+import mobileImage from './npage3.png'
 
 class App extends Component {
   constructor () {
@@ -75,7 +75,7 @@ class App extends Component {
             <AuthenticatedRoute user={user} exact path='/sign-out' render={() => (
               <SignOut alert={this.alert} clearUser={this.clearUser} user={user} />
             )} />
-            <Route
+            <AuthenticatedRoute user={user}
               exact path='/prompts/:id'
               render={() => (
                 <Prompt user={user} />
