@@ -7,6 +7,7 @@ import { MDBInput, MDBBtn } from 'mdbreact'
 const PromptForm = ({ prompt, handleSubmit, handleChange, cancelPath }) => (
   <form onSubmit={handleSubmit}>
     <MDBInput label="Text"
+      required
       placeholder="Text"
       value={prompt.text}
       name="text"
@@ -14,7 +15,7 @@ const PromptForm = ({ prompt, handleSubmit, handleChange, cancelPath }) => (
     />
 
     <label>Category</label>
-    <select name="category" onChange={handleChange} className="browser-default custom-select">
+    <select name="category" onChange={handleChange} required className="browser-default custom-select">
       <option
         value=''
         default
