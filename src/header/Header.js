@@ -32,7 +32,6 @@ const Header = ({ user }) => (
       <MDBNavbarBrand>
         <MDBIcon icon="pencil-alt" />Always Be Drawing!
       </MDBNavbarBrand>
-      { user && <span className="navbar-text mr-2">Welcome, {user.email}</span>}
       { user ? authenticatedOptions : unauthenticatedOptions }
       { alwaysOptions }
     </MDBContainer>
