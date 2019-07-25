@@ -8,7 +8,7 @@
 
 # Photo of Application
 
-![Website Photo](link-to-image)
+![Imgur](https://i.imgur.com/oDxWoC7.png)
 
 # Technologies Used
 
@@ -77,3 +77,7 @@
 -   As a User I want to be able to see all of my added prompts
 
     ## WireFrame
+    
+    ![Website Photo](https://i.imgur.com/iumUNGN.png)
+    ![Website Photo](https://i.imgur.com/jjJdOlW.png)
+    ![Website Photo](https://i.imgur.com/J8VOTHj.png)
