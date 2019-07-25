@@ -23,6 +23,16 @@ const Prompts = (props, state) => {
       })
   }, [])
 
+  if (prompts.length === 0) {
+    return <MDBContainer className='w-responsive text-center p-3 mb-4 mt-2'>
+      <MDBCard>
+        <MDBCardBody>
+          <MDBCardTitle>Loading!</MDBCardTitle>
+        </MDBCardBody>
+      </MDBCard>
+    </MDBContainer>
+  }
+
   const func = () => {
     // creat a new index, where the index of current item, matches index at prompt
     let newItemIndex = prompts.findIndex(prompt => (currentItem._id === prompt._id))

@@ -4,14 +4,16 @@ import { MDBBtn, MDBCardBody, MDBRow, MDBCol, MDBCard, MDBContainer, MDBCardTitl
 const categories = ['animals', 'industrial', 'people', 'food']
 const unauthenticatedOptions = (
   <React.Fragment>
+    <h2 className="MDBCardTitle">A Random Drawing Prompt Generator!</h2>
     <MDBCardTitle>Click a Category Below to Get a Prompt!</MDBCardTitle>
-    <MDBCardText>Sign in to add your own!</MDBCardText>
+    <div className="card-text text-danger">Sign in to add your own prompt to the database!</div>
   </React.Fragment>
 )
 
 const authenticatedOptions = (
   <React.Fragment>
-    <MDBCardTitle>Click a Category Below to Get a Prompt!</MDBCardTitle>
+    <h2 className="MDBCardTitle">A Random Drawing Prompt Generator!</h2>
+    <MDBCardText>Click a Category Below to Get a Prompt!</MDBCardText>
   </React.Fragment>
 )
 
