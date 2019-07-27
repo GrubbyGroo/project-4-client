@@ -8,7 +8,7 @@
 
 # Photo of Application
 
-![Imgur](https://i.imgur.com/oDxWoC7.png)
+![Imgur](https://i.imgur.com/bZWHZ7D.png)
 
 # Technologies Used
 
